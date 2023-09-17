@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+}
+
+#toggle-menu {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.toggle-arrow {
+    color: white;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between; /* Распределить элементы справа */
+    align-items: center; /* Выравнивание по центру вертикально */
+    margin-bottom: 5px;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.menu-item.open {
+    max-height: 500px; /* Задайте желаемую максимальную высоту подменю */
+    opacity: 1;
+}
+
+/* Установите желаемый цвет для ссылок */
+a {
+    color: #fff; /* Белый цвет для текста ссылок */
+    text-decoration: none; /* Убираем подчеркивание ссылок */
+}
+
+/* Установите цвет для ссылок при наведении */
+a:hover {
+    color: #00f; /* Измените цвет при наведении на ссылку (например, синий) */
+}
+
+/* Добавьте стили для активных ссылок (если нужно) */
+a:active {
+    color: #f00; /* Измените цвет активной ссылки (например, красный) */
+}
+
+/* Скрываем только ссылки внутри li, но не скрываем ul */
+#mobile-menu li > *:not(ul){
+    display: block;
+	max-height: 0; /* Начальная высота 0 */
+	max-width: 0;
+    overflow: hidden; /* Скрываем содержимое, которое выходит за пределы максимальной высоты */
+    opacity: 0; /* Начальная непрозрачность 0 */
+	transition: max-height 1.0s ease-in-out, opacity 1.0s ease-in-out; /* Добавляем анимацию */
+}
+
+/* Показываем только те li, которые являются прямыми потомками активного ul */
+#mobile-menu ul.active > li  > *:not(ul){
+    display: block;
+	max-height: 100px; /* Установите достаточно большое значение, чтобы элементы были видимыми */
+	max-width: 100px;
+    opacity: 1;
+}
